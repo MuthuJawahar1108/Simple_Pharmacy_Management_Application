@@ -1,0 +1,30 @@
+<?php
+    session_start();
+    $username=$_SESSION['username'];
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+ 
+    <nav>
+        <p>Welcome <span>Muthu</span></p>
+        <a href="#">Logout</a>
+    </nav>
+    <div class="header-div">
+        <h1>Muthu Pharmacies </h1>
+    </div>
+    <h2>Dashboard</h2>
+    <div class="options">
+        <div>Add Stock</div>
+        <div>Billing Portal</div>
+    </div>
+</body>
+</html>
