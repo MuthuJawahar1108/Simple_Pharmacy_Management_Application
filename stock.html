@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Stocks</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <p>Welcome <span>Muthu</span></p>
+        <a href="login.php">Logout</a>
+    </nav>
+    <div class="f-container">
+        <form action="" method="post" class="stock_form">
+            <h1 id="form_heading">Add stock</h1>
+            <div class="data">
+                <label for="">Medicine Name</label>
+                <input type="text" name="med_name" id=""><br>
+            </div>
+            <div class="data">
+                <label for="">Company Name</label>
+                <input type="text" name="comp_name" id=""><br>
+            </div>
+            <div class="data">
+                <label for="">Cost per unit</label>
+                <input type="text" name="cpu" id=""><br>
+            </div>
+            <div class="data">
+                <label for="">Stock Quantity</label>
+                <input type="text" name="qty"><br>
+            </div>
+            <div class="data">
+                <label for="">Type</label>
+                <input type="text" name="type"><br>
+            </div>
+            <div class="button-group">
+                <button type="submit">Add</button>
+                <button type="reset">Cancel</button>
+            </div>
+        </form>
+        <div class="table_container">
+            <table class="stock_table" border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Company</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

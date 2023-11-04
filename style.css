@@ -7,6 +7,9 @@
     padding: 0;
     box-sizing: border-box ;
 }
+body{
+    height: 100vh;
+}
 :root {
     --font-roboto: "Roboto Slab", serif;
     --font-raleway: "Raleway", sans-serif;  
@@ -56,7 +59,7 @@
     margin-bottom: 20px;
     /* margin-top: 20px; */
 }
-input{
+.form_inputs{
     margin-bottom: 40px;
     padding: 15px 10px;
     border-radius: 20px;
@@ -67,7 +70,7 @@ input{
     padding: 15px 10px;
     border-radius: 20px;
 }
-button{
+.login_button{
     padding: 10px;
     width: 30%;
     align-self: center;
@@ -75,7 +78,7 @@ button{
     margin-bottom: 25px;
     cursor: pointer;
 }
-form{
+.login_form{
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -117,6 +120,12 @@ nav a{
     text-decoration: none;
     color: white;
     font-weight: 500;
+    transition: all .25s ease-in-out;
+}
+nav a:hover{
+    /* font-size: 20px; */
+    font-weight: 600;
+    color: rgb(226, 92, 43);
 }
 .header-div{
     margin: 20px;
@@ -124,7 +133,7 @@ nav a{
     font-family:var(--font-roboto);
     background-color: rgb(146, 202, 202);
 }
-h1{
+.dashboard_h1{
 
     color: red;
     background-image: linear-gradient(90deg,rgb(183, 0, 255),rgb(198, 4, 130),rgb(255, 1, 200),rgb(255, 119, 0),rgb(255, 251, 3));
@@ -137,17 +146,199 @@ h1{
     outline: none;
 }
 
-h2{
+.dashboard_h2{
     text-align: center;
     font-family: var(--font-raleway);
     color: rgb(5, 45, 42);
-
+    padding: 20px;
 }
 .options{
+    margin-top: 30px;
+    /* border: 1px solid magenta; */
+    padding: 100px 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: space-evenly;
+    align-items: center;
+    /* padding: 20px; */
+}
+
+.options a{
+    /* border: 1px solid red; */
+    width: 18%;
+    display: flex;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    color: white;
+    background-color: rgb(210, 101, 181);
+    font-weight: 520;
+    font-size: 25px;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    /* box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px; */
+    justify-content: center;
+    align-items: center;
+    height: 220px;
+    padding: 20px;
+    transition:  transform .4s ease-in-out;
+    cursor: pointer;
+    /* background-image: linear-gradient(45deg,rgba(178, 180, 177, 0.964),rgba(173, 62, 62, 0.956)); */
+    /* height: 100%; */
+}
+ .options a:hover{
+    transform: scaleX(1.03) scaleY(1.03);
+ }
+
+ .f-container{
+    background-image: linear-gradient(90deg,rgb(43, 43, 204),rgb(19, 206, 209));
+    height: 100%;
+    width: 100%;
+    position: relative;
+ }
+
+.stock_form{
+    background-color: white;
+    /* border: 1px solid black; */
+    border-radius: 10px;
+
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-120%,-50%);
+
+    padding: 30px;
+    height: 70%;
+    width: 38%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.data{
+    display: flex;
+    justify-content: center;
+}
+
+
+.stock_form label{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    /* display: block; */
+}
+
+.stock_form input{
+    width: 70%;
+    padding: 5px;
+}
+
+.stock_form h1{
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.button-group{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    gap:10px;
+    margin-top:15px;
+
 }
-.options:nth-of-type(2){
-    background-color: red;
+.button-group button{
+    padding: 8px;
+    border-radius: 20px;
+    width: 50%;
+    border: none;
+    cursor: pointer;
+    
+    background: #5E5DF0;
+    box-shadow: #5E5DF0 0 10px 20px -10px;
+    color: #FFFFFF;
+    font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    width: 40%;
+    word-break: break-word;
+    border: 0;
+}
+
+.table_container{
+    background-color: #FFFFFF;
+    border-radius: 10px;
+
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-10%,-50%);
+
+    padding: 30px;
+    height: 70%;
+    width: 53%;
+}
+
+.stock_table{
+    /* background-color: white; */
+    /* border: 1px solid black; */
+    border-collapse: collapse;
+    /* margin: 10px 0; */
+    font-size: 0.9rem;
+    font-family: sans-serif;
+    box-shadow: 0 0 20px rgba(0,0,0,.15);
+    border-radius: 10px;
+    width: 100%;
+    
+}
+
+
+
+.stock_table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    /* margin: 50px; */
+    /* padding: 50px; */
+}
+.stock_table th,
+.stock_table td {
+    padding: 8px 10px;
+}
+
+
+.stock_table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.stock_table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.stock_table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.billing_form{
+    background-color: white;
+    /* border: 1px solid black; */
+    border-radius: 10px;
+
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-120%,-50%);
+
+    padding: 30px;
+    height: 70%;
+    width: 38%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }

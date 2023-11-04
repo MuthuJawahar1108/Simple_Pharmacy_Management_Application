@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <p>Welcome <span>Muthu</span></p>
+        <a href="login.php">Logout</a>
+    </nav>
+    <div class="f-container">
+        <form action="#" method="post" class="billing_form">
+            <h1 id="billing_heading">Billing details</h1>
+            <div class="customer">
+                <div class="cust_data">
+                    <label for="">Medicine Name</label>
+                    <input type="text" name="med_name" id=""><br>
+                </div>
+                <div class="cust_data">
+                    <label for="">Company Name</label>
+                    <input type="text" name="comp_name" id=""><br>
+                </div>
+            </div>
+            <div class="selection">
+                <div class="select_data">
+                    <label for="">Select Medicine</label>
+                    <select name="medicines" id="medicines">
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                        <option value="mercedes">Mercedes</option>
+                        <option value="audi">Audi</option>
+                    </select>
+                </div>
+                <div class="select_data">
+                    <label for="">Quantity</label>
+                    <input type="text" name="quantity" id=""><br>
+                </div>
+            </div>
+            <button type="button">Add</button>
+            <button type="button">Cancel</button>
+        </form>
+    </div>
+</body>
+</html>
