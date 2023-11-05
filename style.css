@@ -149,7 +149,7 @@ nav a:hover{
 .dashboard_h2{
     text-align: center;
     font-family: var(--font-raleway);
-    color: rgb(5, 45, 42);
+    color: rgb(78, 201, 193);
     padding: 20px;
 }
 .options{
@@ -181,6 +181,7 @@ nav a:hover{
     padding: 20px;
     transition:  transform .4s ease-in-out;
     cursor: pointer;
+    text-decoration: none;
     /* background-image: linear-gradient(45deg,rgba(178, 180, 177, 0.964),rgba(173, 62, 62, 0.956)); */
     /* height: 100%; */
 }
@@ -240,6 +241,8 @@ nav a:hover{
     margin-bottom: 15px;
 }
 
+
+
 .button-group{
     display: flex;
     justify-content: space-evenly;
@@ -297,7 +300,27 @@ nav a:hover{
     
 }
 
+#edit-delete-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    outline: none;
+    border: none;
 
+    /* gap: 3px; */
+}
+
+#edit-delete-group button{
+    border: none;
+    outline: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+#edit-delete-group img{
+    width: 23px;
+    height: 23px;
+}
 
 .stock_table thead tr {
     background-color: #009879;
@@ -340,5 +363,105 @@ nav a:hover{
 
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 40px;
+}
+
+.customer{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    /* gap: 20px; */
+
+}
+
+.customer .cust_data{
+    width:50%;
+}
+
+.selection{
+    display: flex;
+    align-items: center;
+}
+
+.selection .select_data{
+    width: 50%;
+}
+
+.billing_form input{
+    padding: 8px;
+    margin: 5px;
+}
+
+.billing_form select{
+    padding: 8px;
+    margin:5px;
+    width: 80%;
+}
+
+
+.bill_table_container{
+    background-color: #FFFFFF;
+    border-radius: 10px;
+
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(40%,-50%);
+
+    padding: 30px;
+    height: 110%;
+    width: 140%;
+    /* height: 90%;
+    width: 150%; */
+}
+
+.billing_table{
+    /* background-color: white; */
+    /* border: 1px solid black; */
+    border-collapse: collapse;
+    /* margin: 10px 0; */
+    font-size: 0.9rem;
+    font-family: sans-serif;
+    box-shadow: 0 0 20px rgba(0,0,0,.15);
+    border-radius: 10px;
+    width: 100%;
+    
+}
+
+
+
+.billing_table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    /* margin: 50px; */
+    /* padding: 50px; */
+}
+.billing_table th,
+.billing_table td {
+    padding: 8px 10px;
+}
+
+
+.stock_table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.stock_table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.stock_table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+#grand_total{
+    text-align: right;
+    font-size: 20px;
+}
+
+#tot_amt{
+    text-align: center;
+    font-size: 40px;
+    color: rgb(209, 19, 19);
 }

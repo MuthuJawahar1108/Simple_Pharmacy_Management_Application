@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    // session_start();
     include("connection.php");
 
     if(isset($_POST['submit'])){
@@ -15,7 +15,8 @@
         echo "$count";
         if($count==1){
             $_SESSION['username']=$username;
-            header("Location: dashboard.php");
+            // header("Location: dashboard.php");
+            header("Location: dashboard.php?user=" . urlencode($data));
             // echo '<script>window.location.href = "home.html";</script>';
         } else {
             echo '<script>

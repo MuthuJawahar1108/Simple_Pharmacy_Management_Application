@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +9,15 @@
 </head>
 <body>
     <nav>
-        <p>Welcome <span>Muthu</span></p>
-        <a href="login.php">Logout</a>
+        <p>Welcome 
+        <span>
+            
+        </span>
+        </p>
+        <a href="index.html">Logout</a>
     </nav>
     <div class="f-container">
-        <form action="" method="post" class="stock_form">
+        <form method="post" class="stock_form">
             <h1 id="form_heading">Add stock</h1>
             <div class="data">
                 <label for="">Medicine Name</label>
@@ -35,7 +40,7 @@
                 <input type="text" name="type"><br>
             </div>
             <div class="button-group">
-                <button type="submit">Add</button>
+                <button type="submit" name="submit">Add</button>
                 <button type="reset">Cancel</button>
             </div>
         </form>
@@ -49,20 +54,182 @@
                         <th>Price</th>
                         <th>Stock</th>
                         <th>Type</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr data-row-id="1">
                         <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
+                        <td>Medicine 1</td>
+                        <td>Company A</td>
+                        <td>10.00</td>
+                        <td>100</td>
+                        <td>Type A</td>
+                        <td id="edit-delete-group">
+                            <button class="edit-button" data-action="edit" data-row-id="1">
+                                <img src="images/edit.png" alt="Edit">
+                            </button>
+                            <button class="delete-button" data-action="delete" data-row-id="1">
+                                <img src="images/delete.png" alt="Delete">
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
+    <script>
+        
+        document.addEventListener("DOMContentLoaded", function () {
+        // Fetch data from the server and populate the table
+            fetch("fetch_medicines.php")
+                .then((response) => response.json())
+                .then((data) => {
+                    const tableBody = document.querySelector(".stock_table tbody");
+                    tableBody.innerHTML = ""; // Clear existing rows
+                    data.forEach((row) => {
+                        const newRow = document.createElement("tr");
+                        newRow.setAttribute("data-row-id", row.id);
+                        // newRow.innerHTML = `<td>${row.id}</td><td>${row.name}</td><td>${row.compname}</td><td>${row.price}</td><td>${row.stock}</td><td>${row.type}</td>`;
+                        // tableBody.appendChild(newRow);
+
+                        newRow.dataset.rowId = row.id;
+                        newRow.innerHTML = `<td>${row.id}</td><td>${row.name}</td><td>${row.compname}</td><td>${row.price}</td><td>${row.stock}</td><td>${row.type}</td><td id="edit-delete-group">
+                                            <button class="edit-button" data-action="edit" data-row-id="${row.id}">
+                                                <img src="images/edit.png"  alt="Edit">
+                                            </button>
+                                            <button class="delete-button" data-action="delete" data-row-id="${row.id}">
+                                                <img src="images/delete.png"   alt="Delete">
+                                            </button>
+                                            </td>`;
+                        
+                        tableBody.appendChild(newRow);
+                    });
+                })
+                .catch((error) => console.error("Error:", error));
+            
+        });
+
+        const deleteMedicine =async(row_id) => {
+            fetch(`delete_medicine.php?row_id=${row_id}`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/x-www-form-urlencoded",
+                            },
+                            body: `row_id=${row_id}`,
+                        
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                if (data.success) {
+                    // Delete the row from the table (client-side deletion)
+                    const row = document.querySelector(`[data-row-id="${row_id}"]`);
+                    // console.log(row);
+                    row.remove();
+
+                } else {
+                    console.error("Error deleting row:", data.error);
+                }
+            })
+            .catch((error) => console.error("Error deleting row:", error));
+        }
+
+        const tableBody = document.querySelector(".stock_table tbody");
+        tableBody.addEventListener("click",(event)=>{
+            
+            event.preventDefault();
+
+            const target = event.target;
+            console.log(target.dataset);
+            if(target.tagName === "IMG"){
+                
+                const button = target.closest("button"); // Get the parent button element
+                const action = button.dataset.action;
+                const rowId = button.dataset.rowId;
+
+
+                if(action==="edit"){
+
+                    console.log("Inside edit");
+                    const stockForm = document.querySelector(".stock_form");
+
+
+                    fetch(`edit_medicine.php?row_id=${rowId}`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                        },
+                        body: `row_id=${rowId}`,
+                        
+                    }).then((response)=>response.json())
+                    .then((data)=>{
+                        if (data.success) {
+                            // Update the form fields with the retrieved data
+                            const stockForm = document.querySelector(".stock_form");
+                            stockForm.querySelector("[name='med_name']").value = data.data.name;
+                            stockForm.querySelector("[name='comp_name']").value = data.data.compname;
+                            stockForm.querySelector("[name='cpu']").value = data.data.price;
+                            stockForm.querySelector("[name='qty']").value = data.data.stock;
+                            stockForm.querySelector("[name='type']").value = data.data.type;
+                        } else {
+                            console.error("Error retrieving medicine data:", data.error);
+                        }
+                         
+                    }).catch((error)=>console.error("Error: ",error));
+
+                    deleteMedicine(rowId);
+
+                } 
+                else if(action === "delete"){
+
+                    // Handle delete option (e.g., confirm delete)
+                    const confirmDelete = confirm("Are you sure you want to delete this row?");
+                    if (confirmDelete) {
+                        // Send a request to the server to delete the row in the database
+
+                        deleteMedicine(rowId);
+                        // location.reload();
+                    }
+                }
+            }
+
+
+
+
+
+        });
+
+        const stockForm = document.querySelector(".stock_form");
+        stockForm.addEventListener("submit",(event)=>{
+
+            event.preventDefault();
+            const formData = new FormData(stockForm);
+
+            // Send the form data to a PHP script that handles the insertion
+            fetch("add_medicine.php",{
+                method:"POST",
+                body: formData,
+            })
+            .then((response)=>response.json())
+            .then((data)=>{
+                if(data.sucess){
+                    // Update the table with the new record
+                    const tableBody = document.querySelector(".stock_table tbody");
+                    const newRow = document.createElement("tr");
+                    newRow.innerHTML = `<td>${data.id}</td><td>${data.name}</td><td>${data.compname}</td><td>${data.price}</td><td>${data.stock}</td><td>${data.type}</td>`;
+                    tableBody.appendChild(newRow);
+
+                    // Clear the form fields
+                    stockForm.reset();
+                } else {
+                    console.error(data.error);
+                }
+            }) .catch((error)=>console.log("Error:",error));
+
+            location.reload();
+        });
+    </script>
+    
 </body>
 </html>
