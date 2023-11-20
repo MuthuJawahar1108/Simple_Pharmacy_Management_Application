@@ -11,14 +11,14 @@
     <nav>
         <p>Welcome 
         <span>
-            
         </span>
         </p>
         <a href="index.html">Logout</a>
     </nav>
+    <h1 id="stock_heading">Stock Details</h1>
     <div class="f-container">
         <form method="post" class="stock_form">
-            <h1 id="form_heading">Add stock</h1>
+            <h1 id="form_heading">Add Medicine</h1>
             <div class="data">
                 <label for="">Medicine Name</label>
                 <input type="text" name="med_name" id=""><br>
@@ -79,6 +79,7 @@
             </table>
         </div>
     </div>
+
     <script>
         
         document.addEventListener("DOMContentLoaded", function () {
@@ -111,7 +112,7 @@
             
         });
 
-        const deleteMedicine =async(row_id) => {
+        const deleteMedicine = async(row_id) => {
             fetch(`delete_medicine.php?row_id=${row_id}`, {
                             method: "POST",
                             headers: {

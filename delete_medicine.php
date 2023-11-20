@@ -19,8 +19,7 @@
 
     
 
-    
-    include("connection.php");
+
     
     $row_id = $_POST['row_id'];
     

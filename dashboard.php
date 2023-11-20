@@ -6,9 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>"> -->
-    
+    <link rel="stylesheet" href="style.css">    
 </head>
 <body>
     <nav>
@@ -28,7 +26,7 @@
     <h2 class="dashboard_h2">Dashboard</h2>
     <div class="options">
         <a href="stock.html">Add Stock</a>
-        <a href="billing.php">Billing Portal</a>
+        <!-- <a href="billing.php">Billing Portal</a> -->
     </div>
 </body>
 </html>

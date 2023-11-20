@@ -196,6 +196,13 @@ nav a:hover{
     position: relative;
  }
 
+ #stock_heading{
+    color: #009879;
+    background-image: transparent;
+    text-align: center;
+
+ }
+
 #form_heading{
     color: #009879;
     font-size: 25px;
